@@ -5,9 +5,6 @@ myAsyncFunc(function() {
 });
 console.log('after');
 
-
-
-
 // ------------------------------------
 function myAsyncFunc(callback, timeoutSeconds=1) {
     setTimeout(callback, timeoutSeconds * 1000);

@@ -1,35 +1,29 @@
+function MyPromise(executor) {
+    let $onFulfilled = null;
+    let $onRejected = null;
 
-function MyPromise(asyncFuntion) {
-    let resolveTrigger = null;
-    let rejectTrigger = null;
-
-    let resolve = function(result) {
-        console.log('resolve');
-        if(resolveTrigger) {
-            resolveTrigger(result);
+    let resolve = function(res) {
+        if($onFulfilled) {
+            $onFulfilled(res);
         }
     }
-    let reject = function() {
-        console.log('reject');
-        if(rejectTrigger) {
-            resolveTrigger(rejectTrigger);
+    let reject = function(res) {
+        if($onRejected) {
+            $onRejected(res);
         }
     }
 
-    asyncFuntion(resolve, reject);
+    executor(resolve, reject);
 
     let promise = {
-        then: function(resolve) {
-            resolveTrigger = resolve;
-            return promise;
-        },
-        catch: function(reject) {
-            rejectTrigger = reject;
-            return promise;
+        then: function(onFulfilled, onRejected) {
+            $onFulfilled = onFulfilled;
+            $onRejected = onRejected;
+            return this;
         }
     }
 
-    return promise
+    return promise;
 }
 
 module.exports = MyPromise;

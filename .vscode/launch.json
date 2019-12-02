@@ -1,0 +1,88 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v1 Simple - Example 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v1/promise-example1.js",
+            "cwd": "${workspaceFolder}/promiselib/v1"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v2 Simple - Example 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v2/promise-example2.js",
+            "cwd": "${workspaceFolder}/promiselib/v2"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v2 Simple - Example 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v2/promise-example1.js",
+            "cwd": "${workspaceFolder}/promiselib/v2"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v1 Simple - Example 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v1/promise-example2.js",
+            "cwd": "${workspaceFolder}/promiselib/v1"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v3 Class - Example 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v3/promise-example1.js",
+            "cwd": "${workspaceFolder}/promiselib/v3"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v3 Class - Example 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v3/promise-example2.js",
+            "cwd": "${workspaceFolder}/promiselib/v3"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v3 Class - Example 3",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v3/promise-example3.js",
+            "cwd": "${workspaceFolder}/promiselib/v3"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "v3 Class - Example 4",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/promiselib/v3/promise-example4.js",
+            "cwd": "${workspaceFolder}/promiselib/v3"
+        }
+    ]
+}
