@@ -1,29 +1,45 @@
-console.log('before');
-myAsyncFunc().then(function (){
-    console.log('async done 1');
+// create IIFE 'iffy' (Immediately Invoked Function Expression)
+// so await will work
+(async function() {
+
+   // ------------------------------------
+myAsyncFunc()
+.then(() => {
+   console.log('promise done');
+},
+(err) => {
+   console.log('promise error:', err);
+})
+.catch((err) => {
+   console.log('catch error:', err);
 });
-console.log('after');
-/*
-before
-after
-async done 1
+   
+/* Output:
+promise error: something bad happened
 */
 
 // ------------------------------------
-console.log('before');
-async myAsyncFunc();
-console.log('async done 2');
-console.log('after');
-/*
-before
-async done 2
-after
+try {
+   await myAsyncFunc();
+}
+catch(err) {
+   console.log('catch error:', err);
+}
+
+/* Output:
+catch error: something bad happened
 */
 
 
+// end IIFE
+})();
+
 // ------------------------------------
-await function myAsyncFunc(timeoutSeconds=1) {
-    return async (new Promise(function(resolve, reject) {
-        setTimeout(resolve, timeoutSeconds * 1000);
-    }));
+// set to always reject
+function myAsyncFunc(timeoutSeconds=1) {
+   return new Promise(function(resolve, reject) {
+       setTimeout(() => {
+         reject('something bad happened');
+       }, timeoutSeconds * 1000);
+   });
 }

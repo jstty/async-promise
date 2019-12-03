@@ -1,15 +1,30 @@
+// create IIFE 'iffy' (Immediately Invoked Function Expression)
+// so await will work
+(async function() {
 
-var list = ['async done 1', 'async done 2'];
+let list = ['await done 1', 'await done 2'];
 console.log('before');
-for(var item in list) {
-   async myAsyncFunc(1);
+list.forEach(async (item) => {
+   await myAsyncFunc(1);
    console.log(item);
-}
+});
 console.log('after');
 
+/* Output:
+before
+after
+await done 1
+await done 2
+*/
+
+
+// end IIFE
+})();
+
+
 // ------------------------------------
-await function myAsyncFunc(timeoutSeconds=1) {
-   return async (new Promise(function(resolve, reject) {
+function myAsyncFunc(timeoutSeconds=1) {
+   return new Promise(function(resolve, reject) {
        setTimeout(resolve, timeoutSeconds * 1000);
-   }));
+   });
 }
