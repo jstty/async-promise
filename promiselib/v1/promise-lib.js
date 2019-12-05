@@ -21,7 +21,7 @@ function MyPromise(executor) {
             $onRejected = onRejected;
             return this;
         }
-    }
+    };
 
     return promise;
 }

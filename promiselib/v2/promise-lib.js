@@ -1,26 +1,24 @@
 let ID = 0;
+let debug = false;
 
 function MyPromise(executor) {
+    let $ID = ++ID;
+    if(debug) console.info('--- ID:', $ID);
+
     let $onFulfilled = null;
     let $onRejected = null;
 
     let resolve = function(res) {
         if($onFulfilled) {
-            let _res = $onFulfilled(res);
-            if ( (_res != null) &&
-                 (typeof _res.then === 'function') ) {
-                return _res.then(resolve, reject);
-            }
+            if(debug) console.info('--- $onFulfilled ID:', $ID);
+            $onFulfilled(res);
         }
     };
     
     let reject = function(res) {
         if($onRejected) {
-            let _res = $onRejected(res);
-            if ( (_res != null) &&
-                 (typeof _res.then === 'function') ) {
-                return _res.then(resolve, reject);
-            }
+            if(debug) console.info('--- $onRejected ID:', $ID);
+            $onRejected(res);
         }
     }
 
@@ -28,32 +26,31 @@ function MyPromise(executor) {
 
     // ----------------------------------------
     function _then(onFulfilled, onRejected) {
-        // console.info('ID:', this.$ID);
+        if(debug) console.info('--- then ID:', $ID);
 
         return MyPromise(function (_resolve, _reject) {
             if(onFulfilled) {
                 $onFulfilled = function (res) {
+                    if(debug) console.info('--- onFulfilled ID:', $ID);
                     let _res = onFulfilled(res);
-                    // next
-                    // _resolve(_res);
     
+                    // if promise
                     if ( (_res != null) &&
                         (typeof _res.then === 'function') ) {
-                        return _res.then(_resolve, _reject);
+                        _res.then(_resolve, _reject);
                     }
                 };
             }
 
             if(onRejected) {
                 $onRejected = function (res) {
-                    // onRejected(res);
+                    if(debug) console.info('--- onRejected ID:', $ID);
                     let _res = onRejected(res);
-                    // // next
-                    // _resolve(_res);
     
+                    // if promise
                     if ( (_res != null) &&
                         (typeof _res.then === 'function') ) {
-                        return _res.then(_resolve, _reject);
+                        _res.then(_resolve, _reject);
                     }
                 };
             }

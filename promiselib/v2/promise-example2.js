@@ -25,14 +25,19 @@ myAsyncFunc(1)
     return myAsyncFunc(3);
 })
 // Small problem...
-// .then(function (value) {
-//     console.log(`then C ${value} done`);
-// })
+.then(function (value) {
+    console.log(`then C ${value} done`);
+})
 .catch(function (value) {
     console.log(`catch ${value} error`);
 })
 
 /* Output:
+then A 1 done
+then B 2 done
+*/
+
+/* Should Output:
 then A 1 done
 then B 2 done
 catch 3 error

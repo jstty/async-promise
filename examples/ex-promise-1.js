@@ -8,3 +8,9 @@ promise1.then(function (value){
    console.log(value);
 });
 console.log('after');
+
+/* Output:
+before
+after
+async done 1
+*/

@@ -2,23 +2,11 @@
 // so await will work
 (async function() {
 
-console.log('promise before');
-myAsyncFunc().then(function (){
-    console.log('promise done 1');
-});
-console.log('promise after');
-
-/* Output:
-before
-after
-async done 1
-*/
-
 // ------------------------------------
-console.log('await before');
+console.log('before');
 await myAsyncFunc();
-console.log('await done 2');
-console.log('await after');
+console.log('async/await done');
+console.log('after');
 
 /* Output:
 before
